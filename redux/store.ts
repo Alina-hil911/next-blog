@@ -1,20 +1,18 @@
-import { Action } from "redux";
 import { MakeStore } from "next-redux-wrapper";
-import { createStore } from "redux";
-interface FooAction extends Action<"FOO"> {
-  payload: string;
-}
+import thunkMiddleware from "redux-thunk";
+import { createStore, applyMiddleware, compose } from "redux";
+// interface FooAction extends Action<"FOO"> {
+//   payload: string;
+// }
 
-export const reducer = (state = { foo: "" }, action: FooAction) => {
-  switch (action.type) {
-    case "FOO":
-      return { ...state, foo: action.payload };
-    default:
-      return state;
-  }
-};
+import { Postsreducer } from "./actions/posts.reducer";
+const middlewares = [thunkMiddleware];
+export type RootState = ReturnType<typeof Postsreducer>;
 
-export type RootState = ReturnType<typeof reducer>;
 export const makeStore: MakeStore = (initialState: RootState) => {
-  return createStore(reducer, initialState);
+  return createStore(
+    Postsreducer,
+    initialState,
+    compose(applyMiddleware(...middlewares)),
+  );
 };

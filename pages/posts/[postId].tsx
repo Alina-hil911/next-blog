@@ -1,7 +1,3 @@
-import Layout from "components/Layout";
+import Layout from "components/Layout/Layout";
 /// тут надо проверять есть ли пост с таким айди
-export default () => (
-  <Layout>
-    <p>Single POST</p>
-  </Layout>
-);
+export default () => <Layout></Layout>;
