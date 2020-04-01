@@ -1,23 +1,18 @@
 import { useSelector } from "react-redux";
 import { NextPage } from "next";
-import { RootState } from "../redux/store";
+import { AppState } from "../redux/store";
 
 import Layout from "components/Layout/Layout";
 import { fetchItems } from "../redux/actions/actions";
+// import { fetchSinglePostAsync } from "../redux/singlePost/actions";
 import PostPreview from "components/PostPreview/PostPreview";
 
-interface Props {
-  custom: string;
-}
-
-const Page: NextPage<Props> = props => {
-  const posts = useSelector<RootState, RootState["posts"]>(
-    state => state.posts,
-  );
-  console.log(posts);
+const Page: NextPage = () => {
+  const posts = useSelector<AppState, any>(state => state.posts.posts);
 
   return (
     <Layout>
+      {/* <button onClick={fetchSinglePostAsync()}>Click to fetch</button> */}
       {posts.map(item => (
         <PostPreview
           key={item.id}
@@ -26,15 +21,11 @@ const Page: NextPage<Props> = props => {
           id={item.id}
         ></PostPreview>
       ))}
-      <div>Prop from getInitialProps {props.custom}</div>
     </Layout>
   );
 };
 
 Page.getInitialProps = async ({ store }) => {
   await store.dispatch(fetchItems());
-  return {
-    custom: "custom string",
-  };
 };
 export default Page;
