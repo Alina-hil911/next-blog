@@ -1,4 +1,6 @@
 import axios from "axios";
+// import { ThunkAction, ThunkDispatch } from "redux-thunk";
+// import { AnyAction } from "redux";
 
 import {
   SinglePost,
@@ -45,3 +47,27 @@ export const fetchSinglePostAsync = (id): any => {
         ),
       );
 };
+
+// export const fetchSinglePostAsync = (): ThunkAction<
+//   Promise<void>,
+//   {},
+//   {},
+//   AnyAction
+// > => {
+//   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+//     return new Promise<void>(resolve => {
+//       dispatch(
+//         fetchSinglePostSuccess({
+//           id: 12,
+//           title: "lll",
+//           body: "xxx",
+//           comments: [],
+//         }),
+//       );
+//       // axios
+//       //   .get(`https://simple-blog-api.crew.red/posts/${id}?_embed=comments`)
+//       //   .then(({ data }) => data)
+//       //   .then(data =>
+//       // dispatch(
+//       //   fetchSinglePostSuccess({
+//       //

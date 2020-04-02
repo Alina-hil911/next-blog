@@ -1,22 +1,24 @@
+import { Post } from "./styledSinglePost";
 import { useSelector } from "react-redux";
+import { NextPage } from "next";
 import { AppState } from "../../redux/store";
 
-import Layout from "components/Layout/Layout";
-import { Post } from "./styledSinglePost";
+import { fetchSinglePostAsync } from "../../redux/singlePost/actions";
 
-/// тут надо проверять есть ли пост с таким айди
-export default () => {
-  const post = useSelector<AppState, any>(state => state.singlePost);
-  console.log(post, "post");
+const PostDetail: NextPage = () => {
+  const post = useSelector<AppState, any>(state => state.singlePost.post);
+  console.log(post);
   return (
-    <Layout>
-      <Post>
-        <h3>Sunt aut facere repellat provident occaecati</h3>
-        <p>Quia et suscipit suscipit recusandae consequuntur expedita </p>
-        <div className="Post__comments"></div>
-      </Post>
-    </Layout>
+    <Post>
+      <h2>{post.title}</h2>
+      <p>{post.body} </p>
+      <div className="Post__comments"></div>
+    </Post>
   );
 };
 
+PostDetail.getInitialProps = async ({ store, query }) => {
+  await store.dispatch(fetchSinglePostAsync(query.postId));
+};
 /// нужен отдельный компонент на каждый коммент
+export default PostDetail;

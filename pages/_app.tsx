@@ -5,7 +5,7 @@ import { Store } from "redux";
 
 import { makeStore } from "../redux/store";
 import GlobalStyle from "../GlobalStyle";
-
+import Layout from "../components/Layout/Layout";
 interface Props {
   store: Store;
 }
@@ -24,7 +24,9 @@ class MyApp extends App<Props> {
 
     return (
       <Provider store={store}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
         <GlobalStyle></GlobalStyle>
       </Provider>
     );

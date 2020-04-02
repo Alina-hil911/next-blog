@@ -2,16 +2,14 @@ import { useSelector } from "react-redux";
 import { NextPage } from "next";
 import { AppState } from "../redux/store";
 
-import Layout from "components/Layout/Layout";
-import { fetchItems } from "../redux/actions/actions";
-// import { fetchSinglePostAsync } from "../redux/singlePost/actions";
+import { fetchPosts } from "../redux/allPosts/actions";
 import PostPreview from "components/PostPreview/PostPreview";
 
 const Page: NextPage = () => {
   const posts = useSelector<AppState, any>(state => state.posts.posts);
-
+  console.log("posts", posts);
   return (
-    <Layout>
+    <>
       {/* <button onClick={fetchSinglePostAsync()}>Click to fetch</button> */}
       {posts.map(item => (
         <PostPreview
@@ -21,11 +19,13 @@ const Page: NextPage = () => {
           id={item.id}
         ></PostPreview>
       ))}
-    </Layout>
+    </>
   );
 };
 
 Page.getInitialProps = async ({ store }) => {
-  await store.dispatch(fetchItems());
+  console.log("works");
+  await store.dispatch(fetchPosts());
+  console.log("posts", store);
 };
 export default Page;
