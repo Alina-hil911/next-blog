@@ -5,7 +5,6 @@ export const FETCH_SINGLE_POST_ERROR = "FETCH_SINGLE_POST_ERROR";
 interface fetchSinglePostStart {
   type: typeof FETCH_SINGLE_POST_START;
   payload: number;
-  //   ИСПРАВИТЬ
 }
 
 export type fetchSinglePostStartType = fetchSinglePostStart;

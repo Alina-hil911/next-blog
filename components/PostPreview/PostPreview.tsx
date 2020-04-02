@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { fetchSinglePostAsync } from "../../redux/singlePost/actions";
+import { addNewPostStartAsync } from "../../redux/newPost/actions";
 import { PostPreview } from "./styled";
 
 type Props = {
@@ -16,11 +17,14 @@ type Props = {
   title: string;
   body: string;
   fetchSinglePost: any;
+  tr: any;
 };
 
-const Post = ({ id, title, body, fetchSinglePost }: Props) => {
+const Post = ({ id, title, body, fetchSinglePost, tr }: Props) => {
+  console.log(tr);
   return (
     <PostPreview>
+      <button onClick={tr}>lets try</button>
       <p>id: {id}</p>
       <h3>{title}</h3>
       <p>{body}</p>
@@ -34,6 +38,7 @@ const Post = ({ id, title, body, fetchSinglePost }: Props) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSinglePost: bindActionCreators(fetchSinglePostAsync, dispatch),
+    tr: bindActionCreators(addNewPostStartAsync, dispatch),
   };
 };
 
