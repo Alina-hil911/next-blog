@@ -62,7 +62,7 @@ const New = ({ addNewPost }) => {
             </div>
             {error && (
               <p>
-                Your title and your post both must be at least 3 characters
+                Your title and your post both must be more thez3 characters
                 long!
               </p>
             )}
