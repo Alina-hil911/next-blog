@@ -23,6 +23,9 @@ const New = ({ addNewPost }) => {
     if (title.length > 3 && post.length > 3) {
       setError(false);
     }
+    if (title.length < 3 || post.length < 3) {
+      setError(true);
+    }
   }, [title, post]);
 
   return (
@@ -62,7 +65,7 @@ const New = ({ addNewPost }) => {
             </div>
             {error && (
               <p>
-                Your title and your post both must be more thez3 characters
+                Your title and your post both must be more then 3 characters
                 long!
               </p>
             )}
