@@ -28,7 +28,7 @@ export const fetchSinglePostError = (
   payload: errorMsg,
 });
 
-export const fetchSinglePostAsync = (id: number): any => {
+export const fetchSinglePostAsync = (id: string): any => {
   return dispatch => {
     dispatch(fetchSinglePostStart());
     return axios

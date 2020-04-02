@@ -1,4 +1,4 @@
-import { Post } from "./styledSinglePost";
+import { Post, Comments } from "./styledSinglePost";
 import { useSelector } from "react-redux";
 import { NextPage } from "next";
 import { AppState } from "../../redux/store";
@@ -12,18 +12,18 @@ const PostDetail: NextPage = () => {
     <Post>
       <h2>{post.title}</h2>
       <p>{post.body} </p>
-      <div className="Post__comments">
+      <Comments>
         {post.comments && post.comments.length ? (
-          <p>
-            comments:{" "}
+          <>
+            <h3>comments: </h3>
             {post.comments.map(comment => (
               <span key={Date.now()}>{comment.body}</span>
             ))}
-          </p>
+          </>
         ) : (
           <p>No comments to this post</p>
         )}
-      </div>
+      </Comments>
       <Link href="/">
         <a>Go to the main page</a>
       </Link>
@@ -32,7 +32,7 @@ const PostDetail: NextPage = () => {
 };
 
 PostDetail.getInitialProps = async ({ store, query }) => {
-  await store.dispatch(fetchSinglePostAsync(query.postId));
+  await store.dispatch(fetchSinglePostAsync(query.postId.toString()));
 };
 
 export default PostDetail;

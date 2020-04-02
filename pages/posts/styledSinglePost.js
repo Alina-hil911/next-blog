@@ -12,6 +12,24 @@ export const Post = styled.div`
   h3 {
     font-weight: 800;
   }
-  &__comments {
+  a {
+    color: black;
+    font-weight: 700;
+    margin-top: 1.5rem;
+  }
+`;
+
+export const Comments = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h3 {
+  }
+  span {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { bindActionCreators } from "redux";
@@ -11,12 +11,19 @@ const New = ({ addNewPost }) => {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(true);
 
   const handleSubmit = (e: React.MouseEvent): void => {
     e.preventDefault();
     addNewPost(post, title);
     setIsSubmitted(true);
   };
+
+  useEffect(() => {
+    if (title.length > 3 && post.length > 3) {
+      setError(false);
+    }
+  }, [title, post]);
 
   return (
     <NewPost>
@@ -53,7 +60,17 @@ const New = ({ addNewPost }) => {
                 onChange={e => setPost(e.target.value)}
               ></textarea>
             </div>
-            <button type="submit" onClick={e => handleSubmit(e)}>
+            {error && (
+              <p>
+                Your title and your post both must be at least 3 characters
+                long!
+              </p>
+            )}
+            <button
+              disabled={error}
+              type="submit"
+              onClick={e => handleSubmit(e)}
+            >
               Submit your post
             </button>
           </form>
