@@ -17,6 +17,7 @@ export const Postsreducer = (
 ): PostsState => {
   switch (action.type) {
     case FETCH_POSTS_START:
+      console.log("works from reducer");
       return {
         ...state,
         isLoading: true,

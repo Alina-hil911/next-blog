@@ -26,6 +26,5 @@ const Page: NextPage = () => {
 Page.getInitialProps = async ({ store }) => {
   console.log("works");
   await store.dispatch(fetchPosts());
-  console.log("posts", store);
 };
 export default Page;
