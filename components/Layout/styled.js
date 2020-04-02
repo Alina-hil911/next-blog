@@ -19,3 +19,17 @@ export const Header = styled.header`
     justify-content: space-between;
   }
 `;
+
+export const Footer = styled.footer`
+  width: 100%;
+  background-color: black;
+  padding: 1rem 3rem;
+  box-sizing: border-box;
+
+  p {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+`;

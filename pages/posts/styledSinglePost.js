@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Post = styled.div`
-  margin: 3rem auto 0;
+  min-height: 90vh;
+  margin: 0 auto;
   background-color: lightgrey;
   padding: 2rem 1rem;
   display: flex;

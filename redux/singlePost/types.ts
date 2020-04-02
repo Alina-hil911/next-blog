@@ -4,7 +4,6 @@ export const FETCH_SINGLE_POST_ERROR = "FETCH_SINGLE_POST_ERROR";
 
 interface fetchSinglePostStart {
   type: typeof FETCH_SINGLE_POST_START;
-  payload: number;
 }
 
 export type fetchSinglePostStartType = fetchSinglePostStart;
@@ -32,8 +31,7 @@ export interface SinglePost {
   id: number;
   title: string;
   body: string;
-  comments: any;
-  ///исправить комменты
+  comments: [];
 }
 
 export interface SinglePostState {

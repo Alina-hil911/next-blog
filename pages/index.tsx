@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { AppState } from "../redux/store";
-
 import { NextPage } from "next";
 
-import { fetchPosts } from "../redux/allPosts/actions";
+import { fetchItems } from "../redux/allPosts/actions";
 import PostPreview from "components/PostPreview/PostPreview";
 
 const Page: NextPage = () => {
-  const posts = useSelector<AppState, any>(state => state.posts.posts);
+  const posts = useSelector<AppState, any>(state => {
+    console.log(state);
+    return state.posts.posts;
+  });
 
   return (
     <>
@@ -24,6 +26,6 @@ const Page: NextPage = () => {
 };
 
 Page.getInitialProps = async ({ store }) => {
-  await store.dispatch(fetchPosts());
+  await store.dispatch(fetchItems());
 };
 export default Page;

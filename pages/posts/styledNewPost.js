@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NewPost = styled.div`
+  min-height: 100vh;
   width: 80%;
   padding: 1rem 2rem;
   background: lightgrey;
@@ -65,5 +66,9 @@ export const NewPost = styled.div`
       outline: none;
       opacity: 1;
     }
+  }
+  a {
+    color: black;
+    font-weight: 700;
   }
 `;

@@ -1,6 +1,4 @@
 import axios from "axios";
-// import { ThunkAction, ThunkDispatch } from "redux-thunk";
-// import { AnyAction } from "redux";
 
 import {
   SinglePost,
@@ -19,9 +17,8 @@ export const fetchSinglePostSuccess = (
   payload: post,
 });
 
-export const fetchSinglePostStart = (id: number): fetchSinglePostStartType => ({
+export const fetchSinglePostStart = (): fetchSinglePostStartType => ({
   type: FETCH_SINGLE_POST_START,
-  payload: id,
 });
 
 export const fetchSinglePostError = (
@@ -31,11 +28,14 @@ export const fetchSinglePostError = (
   payload: errorMsg,
 });
 
-export const fetchSinglePostAsync = (id): any => {
-  return dispatch =>
-    axios
+export const fetchSinglePostAsync = (id: number): any => {
+  return dispatch => {
+    dispatch(fetchSinglePostStart());
+    return axios
       .get(`https://simple-blog-api.crew.red/posts/${id}?_embed=comments`)
-      .then(({ data }) => data)
+      .then(({ data }) => {
+        return data;
+      })
       .then(data =>
         dispatch(
           fetchSinglePostSuccess({
@@ -46,28 +46,5 @@ export const fetchSinglePostAsync = (id): any => {
           }),
         ),
       );
+  };
 };
-
-// export const fetchSinglePostAsync = (): ThunkAction<
-//   Promise<void>,
-//   {},
-//   {},
-//   AnyAction
-// > => {
-//   return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
-//     return new Promise<void>(resolve => {
-//       dispatch(
-//         fetchSinglePostSuccess({
-//           id: 12,
-//           title: "lll",
-//           body: "xxx",
-//           comments: [],
-//         }),
-//       );
-//       // axios
-//       //   .get(`https://simple-blog-api.crew.red/posts/${id}?_embed=comments`)
-//       //   .then(({ data }) => data)
-//       //   .then(data =>
-//       // dispatch(
-//       //   fetchSinglePostSuccess({
-//       //

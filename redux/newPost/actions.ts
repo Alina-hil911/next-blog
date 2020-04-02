@@ -23,21 +23,6 @@ export const addNewPostError = (errorMsg: string): addNewPostActionTypes => ({
   payload: errorMsg,
 });
 
-// export const addNewPostStartAsync = (body: string, title: string): any => {
-//   return dispatch => {
-//     dispatch(addNewPostStart({ body, title }));
-//     axios({
-//       method: "post",
-//       url: "https://simple-blog-api.crew.red/posts",
-//       data: { title: title, body: body },
-//       headers: { "Content-Type": "application/json" },
-//     })
-//       .then(({ data }) => data)
-//       .then(() => dispatch(addNewPostSuccess()))
-//       .catch(e => dispatch(addNewPostError(e.message)));
-//   };
-// };
-
 export const addNewPostStartAsync = (
   body: string,
   title: string,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { bindActionCreators } from "redux";
 import Link from "next/link";
 
@@ -62,7 +63,7 @@ const New = ({ addNewPost }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     addNewPost: bindActionCreators(addNewPostStartAsync, dispatch),
   };

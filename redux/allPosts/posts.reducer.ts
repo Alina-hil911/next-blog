@@ -23,6 +23,7 @@ export const Postsreducer = (
         isLoading: true,
       };
     case FETCH_POSTS_SUCCESS:
+      console.log("424242");
       return {
         ...state,
         isLoading: false,

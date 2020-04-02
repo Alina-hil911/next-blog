@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { Header } from "./styled";
+import { Header, Footer } from "./styled";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div>
+    <>
       <Header>
         <nav>
           <Link href="/">
@@ -16,7 +16,10 @@ const Layout: React.FC = ({ children }) => {
         </nav>
       </Header>
       {children}
-    </div>
+      <Footer>
+        <p>{new Date().getFullYear()}</p>
+      </Footer>
+    </>
   );
 };
 

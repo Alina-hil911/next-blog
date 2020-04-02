@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
   FETCH_POSTS_START,
   FETCH_POSTS_SUCCESS,
@@ -20,20 +21,12 @@ export const fetchPostsError = (errorMsg: string) => ({
 });
 
 export function fetchItems(): any {
-  return dispatch =>
-    axios
-      .get("https://simple-blog-api.crew.red/posts")
-      .then(({ data }) => data)
-      .then(items => dispatch({ type: FETCH_POSTS_SUCCESS, payload: items }));
-}
-
-export const fetchPosts = (): any => {
   return dispatch => {
     dispatch(fetchPostsStart());
-    axios
+    return axios
       .get("https://simple-blog-api.crew.red/posts")
       .then(({ data }) => data)
-      .then(posts => dispatch(fetchPostsSuccess(posts)))
+      .then(items => dispatch({ type: FETCH_POSTS_SUCCESS, payload: items }))
       .catch(e => dispatch(fetchPostsError(e.message)));
   };
-};
+}
