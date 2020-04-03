@@ -7,7 +7,6 @@ import PostPreview from "components/PostPreview/PostPreview";
 
 const Page: NextPage = () => {
   const posts = useSelector<AppState, any>(state => {
-    console.log(state);
     return state.posts.posts;
   });
 

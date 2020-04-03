@@ -4,7 +4,7 @@ import { Dispatch } from "redux";
 import { bindActionCreators } from "redux";
 import Link from "next/link";
 
-import { NewPost } from "./styledNewPost";
+import { NewPost, ErrorInfo } from "./styledNewPost";
 import { addNewPostStartAsync } from "../../redux/newPost/actions";
 
 const New = ({ addNewPost }) => {
@@ -64,10 +64,10 @@ const New = ({ addNewPost }) => {
               ></textarea>
             </div>
             {error && (
-              <p>
+              <ErrorInfo>
                 Your title and your post both must be more then 3 characters
                 long!
-              </p>
+              </ErrorInfo>
             )}
             <button
               disabled={error}

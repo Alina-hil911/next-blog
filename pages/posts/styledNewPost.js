@@ -72,3 +72,7 @@ export const NewPost = styled.div`
     font-weight: 700;
   }
 `;
+export const ErrorInfo = styled.p`
+  color: red;
+  text-align: center;
+`;

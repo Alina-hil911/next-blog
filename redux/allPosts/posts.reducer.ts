@@ -17,13 +17,11 @@ export const Postsreducer = (
 ): PostsState => {
   switch (action.type) {
     case FETCH_POSTS_START:
-      console.log("works from reducer");
       return {
         ...state,
         isLoading: true,
       };
     case FETCH_POSTS_SUCCESS:
-      console.log("424242");
       return {
         ...state,
         isLoading: false,

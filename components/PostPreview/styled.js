@@ -15,6 +15,9 @@ export const PostPreview = styled.div`
   h3 {
     font-size: 2rem;
     margin: 0;
+    max-width: 500px;
+    word-wrap: break-word;
+    text-align: center;
   }
 
   a {
